@@ -1,0 +1,39 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epsfig}
+
+% epsf figures (inline or centered)
+\newcommand{\FIG}[1]{\begin{center}
+  \mbox{\epsfclipoff\epsffile{#1.eps}}
+  \end{center}}
+\def\epsfsize#1#2{0.7#1}	      % change 1.0 to any zoom factor you want
+
+% numeric sets
+\newcommand{\Reals}{\mathbb{R}}      % real numbers
+\newcommand{\Naturals}{\mathbb{N}}   % natural numbers
+\newcommand{\Integers}{\mathbb{Z}}   % integer numbers
+\newcommand{\Rationals}{\mathbb{Q}}  % rational numbers
+\newcommand{\Complexes}{\mathbb{C}}  % complex numbers
+
+\begin{document}
+	\title{COM S 331\large \\Homework 1}
+	\author{Christian Shinkle}
+	\maketitle
+	\begin{enumerate}
+		\item $L = \{((a^*c^+)^*b^*(a^*c^+)^*)^*+((a+c)^*(c^+b^*)^*(a+c)^*)^*\}$
+		\item $L = \{((a+c)^*b(a+c)^*b))^*+(a+c)^*\}$
+		\item $(a+b+c)^*(a+b)^*$ can be simplified to $(a+b+c)^*$ because any string that can be created using $(a+b)^*$ can also be created using $(a+b+c)^*$ because $(a+b)^*\subseteq(a+b+c)^*$.\\
+		In plain English, this expression describes any permutation of any length of the three characters $a, b,$ and $c$.
+		\item $(a+b)^*c^*(a+b)^*$ cannot be simplified because the ordering of the concatenation doesn't allow for either $(a+b)^*$ to be rearranged in a way that would allow for simplification.\\
+		In plain English, this expression describes string with any permutation of any length of the two characters $a$ and $b$, followed by a string of any length made of just $c$'s, followed again by permutation of any length of the two characters $a$ and $b$.
+		\item The following diagram is a DFA:\\
+		\FIG{DFA1}
+		$S_2$ is a trap state that prevents the DFA from leaving that state because as soon as a single $a$ is followed by a single $b$, it is impossible for the DFA to accept the string, so it must reject it.
+		\item The following DFA models $L={w\in{a,b}^* : |w|_a\ mod\ 3=0}$:\\
+		{\def\epsfsize#1#2{0.8#1}}\FIG{DFA2}
+		
+	\end{enumerate}
+\end{document} 

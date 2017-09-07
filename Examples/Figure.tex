@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage{epsfig}
+\listfiles
+
+\title{\bf How to include ``.eps'' files in LaTeX}
+\author{Gianfranco Ciardo}
+
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\topmargin}{-0.5in}
+\setlength{\headheight}{0cm}
+\setlength{\headsep}{0cm}
+\setlength{\textheight}{10in}
+\setlength{\textwidth}{7in}
+\setlength{\topskip}{0cm}
+\renewcommand{\baselinestretch}{1.1}
+\renewcommand{\arraystretch}{1.2}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.99}
+\renewcommand{\floatpagefraction}{0.99}
+\renewcommand{\textfraction}{0.01}
+
+% epsf figures (inline or centered)
+\newcommand{\INLINEFIG}[1]{\epsfclipoff\epsffile{#1.eps}}
+\newcommand{\FIG}[1]{\begin{center}
+  \mbox{\epsfclipoff\epsffile{#1.eps}}
+  \end{center}}
+\def\epsfsize#1#2{1.0#1}	      % change 1.0 to any zoom factor you want
+
+\pagestyle{empty}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+First, you need to generate a ``.eps'' (encapsulated postscript) file using
+one of the tools available to you.
+Then you can include it in a LaTeX file.
+To see how, examine the source file for this page.
+
+This is an example of an inline figure, \INLINEFIG{Figure}, while
+this is an example of the same figure centered in a space by itself:
+\FIG{Figure}
+
+You can scale the figure as you want:
+for example, this is the same figure, just twice as large:
+{\def\epsfsize#1#2{2.0#1}\FIG{Figure}}
+or one fourth as large:
+{\def\epsfsize#1#2{0.25#1}\FIG{Figure}}
+
+In multipage documents, it is usually more appropriate to include pictures
+only in the ``figure'' environment, as done in Fig.~\ref{FIG:myfig}.
+
+\begin{figure}
+\FIG{Figure}
+\caption{An example of floating figure.}
+\label{FIG:myfig}
+\end{figure}
+
+\end{document}

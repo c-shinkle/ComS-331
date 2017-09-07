@@ -1,0 +1,134 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epsfig}
+
+% epsf figures (inline or centered)
+\newcommand{\FIG}[1]{\begin{center}
+  \mbox{\epsfclipoff\epsffile{#1.eps}}
+  \end{center}}
+\def\epsfsize#1#2{1.0#1}	      % change 1.0 to any zoom factor you want
+
+% numeric sets
+\newcommand{\Reals}{\mathbb{R}}      % real numbers
+\newcommand{\Naturals}{\mathbb{N}}   % natural numbers
+\newcommand{\Integers}{\mathbb{Z}}   % integer numbers
+\newcommand{\Rationals}{\mathbb{Q}}  % rational numbers
+\newcommand{\Complexes}{\mathbb{C}}  % complex numbers
+
+\begin{document}
+\title{COMS 331\large \\
+	Homework 0}
+\author{Christian Shinkle}
+\maketitle
+\begin{enumerate}
+	\item 
+		\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax} 
+			{
+			This is an inline equation: $x+y=3$\\
+			This is a displayed equation: 
+			\[x+\frac{y}{z-\sqrt{3}}=2.\]
+			This is how you can define a piece-wise linear function:
+			\[f(x)=
+				\begin{cases}
+				3x+2 & \text{if $x<0$}\\
+				7x+2 & \text{if $x\geq 0$ and $x<10$}\\
+				5x+22 & \text{otherwise}
+				\end{cases} 
+			\]
+			This is a matrix:
+			\begin{center}
+				\begin{tabular} {|c|c|c|c|} 
+				\hline 
+				9 & 9 & 9 & 9 \\
+				\hline
+				6 & 6 & 6 & \\
+				\hline
+				3 & & 3 & 3 \\ 
+				\hline
+				\end{tabular}
+			\end{center}
+			This is a figure incorporated in a LaTeX file\\
+			\FIG{fig}
+			}
+		}
+	\item 
+		In order to show that $\Naturals \ $and$\ \Integers$ are equinumerous, we must define a bijection between them. Note the function f : $\Naturals \to \Integers$ where 
+		\[f(n)=
+			\begin{cases}
+			$-(n/2)$ & \text{if $n$ is even}\\
+			$(n+1)/2$ & \text{if $n$ is odd }\\
+			\end{cases} 
+		\]
+		First, we prove $f$ is one-to-one. Let $\forall n,m \in \Naturals ,\  f(n) = f(m)$. Then we must prove 2 cases. \\
+		Case 1: $n$ is even\\
+		\[ f(n) = f(m)\] 
+		\[-(n/2) = -(m/2)\]
+		\[n/2 = m/2\]
+		\[n = m\]
+		Case 2: $n$ is odd\\
+		\[f(n) = f(m)\]
+		\[(n+1)/2 = (m+1)/2\]
+		\[n+1 = m+1\]
+		\[n = m\]
+		Both cases hold, therefore $f(n)$ is one-to-one.\\ \\
+		The next step is to prove $f(n)$ is onto.  \\
+		Then we must prove 2 cases: \\
+		Case 1: $n$ is even \\
+		Let $\forall m \in \Integers^- \cup \{0\},\ \exists n \in \Naturals \ f(n) = m$.
+		\[f(n) = m \]
+		\[-(n/2) = m\]
+		\[n/2 = -m \]
+		\[n = -2m\]
+		By definition of even numbers, every $n$ can be reached. \\
+		\\
+		Case 2: $n$ is odd \\
+		Let $\forall m \in \Integers^+ , \exists n \in \Naturals \ f(n) = m$.
+		\[f(n) = m\]
+		\[(n+1)/2 = m\]
+		\[n+1 = 2m\]
+		\[n = 2m +1\]
+		By definition of odd numbers, every $n$ can be reached. \\
+		Therefore $\Integers^-\cup \{0\}\cup \Integers^+ = \Integers$ and all value in the codomain can be reached. \\
+		\\
+		Both cases are satisfied, so $f(x)$ is a bijective function. By definition of equinumerous, $\Naturals$ and $\Integers$ are equinumerous. 
+	\item
+		$f(x)$ is one-to-one, but not onto for $f(x)=x^2$.\\
+		$f(x)$ is onto, but is not one-to-one for\\
+		\[f(x)=
+			\begin{cases}
+			\sqrt{x} & \text{if $x\geq0$}\\
+			-\sqrt{x} & \text{if $x<0$}\\
+			\end{cases} 
+		\]
+	\item
+		To prove $R$ is an equivalence relation, we must prove it is reflexive, symmetric, and transitive.\\
+		Reflexive: $\forall a\in\Naturals, (a,a)\in R = (a-a)\ mod\ 3 = 0\ mod\ 3 = 0$.\\
+		\\
+		Symmetric: $\forall a, b\in\Naturals$, let $(a-b)\in R$. Then $(a-b)\ mod\ 3$ or $\exists x\in \Naturals\ , a-b=3x$. Note the equation can be rewritten as $b-a=-3x$. $-3x\ mod\ 3=0$ therefore $b-a\ mod\ 3=0$ and $(b,a)\in R$.\\
+		\\
+		Transitive: Suppose $a,b,c\in \Naturals$ and $(a,b)\in R$ and $(b,c)\in R$. Let $a-b=3x$ and $b-c=3y$. Then $a-c=3x+3y$. Note $3x+3y=3(x+y)$. Therefore $(a,c)\in R$.\\
+		\\
+		Relations $R$ has three equivalence classes:
+		\begin{itemize}
+			\item $\{0, 3, 6, ...\}$
+			\item $\{1, 4, 7, ...\}$
+			\item $\{2, 5, 8, ...\}$
+		\end{itemize}
+	\item
+		For this proof, we will be inducting $n$ from the formula.\\
+		Base case: Note $\Sigma_{i=1}^1 i^2=(2*1+1)(1+1)1/6 = 1$.\\
+		\\
+		Inductive Step: $\Sigma_{i=1}^{n+1} i^2 = \Sigma_{i=1}^n i^2 + (n+1)^2$.
+		The inductive hypothesis is $\Sigma_{i=1}^n i^2 = (2n+1)(n+1)n/6$.	Using the I.H.,
+		\[\Sigma_{i=1}^{n+1} i^2 =\]
+		\[(2n+1)(n+1)n/6 + (n+1)^2 =\]
+		\[\frac{n^3}{3}+\frac{3n^2}{2}+\frac{13n}{6}+1 =\]
+		\[(2n^3+9n^2+13n+6)\div6=\]
+		\[(2n^2+7n+6)(n+1)\div6=\]
+		\[(2(n+1)+1)((n+1)+1)(n+1)\div6\]
+		It follows by inductions that $\Sigma_{i=1}^{n+1} i^2=(2*1+1)(1+1)1/6 = 1$
+	\end{enumerate}
+\end{document} 
