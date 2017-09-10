@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epsfig}
+
+% epsf figures (inline or centered)
+\newcommand{\FIG}[1]{\begin{center}
+  \mbox{\epsfclipoff\epsffile{#1.eps}}
+  \end{center}}
+\def\epsfsize#1#2{.7#1}	      % change 1.0 to any zoom factor you want
+
+% numeric sets
+\newcommand{\Reals}{\mathbb{R}}      % real numbers
+\newcommand{\Naturals}{\mathbb{N}}   % natural numbers
+\newcommand{\Integers}{\mathbb{Z}}   % integer numbers
+\newcommand{\Rationals}{\mathbb{Q}}  % rational numbers
+\newcommand{\Complexes}{\mathbb{C}}  % complex numbers
+ 
+ \begin{document}
+ 	\title{COM S 331\large \\Homework 2}
+	\author{Christian Shinkle}
+	\maketitle
+	\begin{enumerate}
+		\item DFA:
+		\FIG{hw2DFA1}
+		\item In plain English, any binary string that's at least 4 bits long and has a 0 for the fourth to last bit. The regular expression for it is: \[(0+1)^*0(0+1)(0+1)(0+1)\] \newpage The NFA that defines this DFA is: \FIG{hw2NFA1}
+		\item This is a DFA:\def\epsfsize#1#2{.6#1} \FIG{hw2DFA2}
+	\end{enumerate}
+ \end{document}
