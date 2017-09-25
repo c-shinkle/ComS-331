@@ -1,0 +1,39 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epsfig}
+
+% epsf figures (inline or centered)
+\newcommand{\FIG}[1]{\begin{center}
+  \mbox{\epsfclipoff\epsffile{#1.eps}}
+  \end{center}}
+\def\epsfsize#1#2{1.0#1}	      % change 1.0 to any zoom factor you want
+
+% numeric sets
+\newcommand{\Reals}{\mathbb{R}}      % real numbers
+\newcommand{\Naturals}{\mathbb{N}}   % natural numbers
+\newcommand{\Integers}{\mathbb{Z}}   % integer numbers
+\newcommand{\Rationals}{\mathbb{Q}}  % rational numbers
+\newcommand{\Complexes}{\mathbb{C}}  % complex numbers
+ \newcommand{\ra}{\rightarrow}
+ \begin{document}
+ 	\title{COM S 331\large \\Homework 4}
+	\author{Christian Shinkle}
+	\maketitle
+	\begin{enumerate}
+		\item Proof by Contradiction: Assume $L$ is regular, then\\ $\exists m\in \Naturals,\forall x\in L$, $|x|>m, \exists a, b, c \in w^*, x=abc, |ab|\leq m, |b|>0,\\ \forall k\in\Naturals, ab^{k}c\in L$.
+		Consider $ww$ and denote each substring $w$ as $w_1$ and $w_2$. Then, decompose it in any possible way into $abc$ satisfying $|ab|\leq m$,	$|b|>0$. Then, set $k=0$ for any $b$ that was chosen. Three cases can arise: 
+		\begin{enumerate}
+			\item b is entirely in $w_1$
+			\item b is entirely in $w_2$
+			\item b is partially in $w_1$ and $w_2$
+		\end{enumerate}
+		The first two cases are trivial because under pumping $b^0$ will make either $w_1$ or $w_2$ no longer equal to the original $w$. If the thrid cases arises, then both $w_1$ and $w_2$ will both not be equal to the $w$. In all three cases, a contradiction has occured.
+		\item Proof by Contradiction: Assume $L$ is regular. 
+		Then, using the Closure property of Homomorphism, we can say $L^{'}=\{w\in \{0,1\}^*:|w|_0\neq|w|_1\}$ is obtained from the homomorphism $a\ra0$ and $b\ra1$. 
+		Then, using the Closure property of Complementation, we say\\ $L^{''}=\{w\in \{0,1\}^*:|w|_0=|w|_1\}$. 
+		Then, using the Closure property of Concatenation, we say $L^{''}(M_1)*L^{''}(M_2)=L^{'''}=\{w\in \{0,1\}^*: ww\}$. However, note that $L^{'''}$ is regular, but using the proof from problem one, $L^{'''}$ is nonregular, a contradiction.
+	\end{enumerate}
+ \end{document}
