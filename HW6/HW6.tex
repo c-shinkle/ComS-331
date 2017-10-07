@@ -1,0 +1,40 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{epsfig}
+
+% epsf figures (inline or centered)
+\newcommand{\FIG}[1]{\begin{center}
+  \mbox{\epsfclipoff\epsffile{#1.eps}}
+  \end{center}}
+\def\epsfsize#1#2{1.0#1}	      % change 1.0 to any zoom factor you want
+\newcommand{\ra}{\rightarrow}
+% numeric sets
+\newcommand{\Reals}{\mathbb{R}}      % real numbers
+\newcommand{\Naturals}{\mathbb{N}}   % natural numbers
+\newcommand{\Integers}{\mathbb{Z}}   % integer numbers
+\newcommand{\Rationals}{\mathbb{Q}}  % rational numbers
+\newcommand{\Complexes}{\mathbb{C}}  % complex numbers
+ 
+ \begin{document}
+ 	\title{COM S 331\large \\Homework 6}
+	\author{Christian Shinkle}
+	\maketitle
+	\begin {enumerate}
+		\item The following CFG satisfies problem 1:\\
+		$G=(\{S,T\}, \{0,1\}, S, P)$ where \\
+		$P=\{S\ra0S1|T|\epsilon , T\ra1T0|\epsilon\}$ 
+
+		\item The following CFG satisfies problem 2:\\
+		$G=(\{S,T\},\{a,b\},S,P)$ where\\
+		$P=\{S\ra aT|W|\epsilon, T\ra aU|W, U\ra aSb, W\ra Wb|b\}$
+		
+		\item The following CFG satisfies problem 3:\\
+		$G=(\{S,T,F\},\{t,f, \vee, \wedge, \neg, (, ), =\}, S, P)$ where \\
+		$P=\{S\ra T=t|F=f,\\
+		T\ra t|\neg(F)|(T\wedge T)|(T\vee T)|(T\vee F)|(F\vee T),\\
+		F\ra f|\neg(T)|(F\vee F)|(F\wedge F)|(F\wedge T)|(T\wedge F)\}$ 
+	\end{enumerate}
+ \end{document}
